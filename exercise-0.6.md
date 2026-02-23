@@ -3,16 +3,16 @@ sequenceDiagram
     participant browser
     participant server
 
-    Note right of browser: User writes a note and clicks "Save"
+    Note over browser: User types a note and clicks "Save"
 
-    browser->>browser: JavaScript intercepts form submission
-    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
-    activate server
-    server-->>browser: 201 Created (JSON response)
-    deactivate server
+    Note over browser: JavaScript intercepts the form submission (preventing the default browser behaviour)
 
-    Note right of browser: JavaScript updates the notes list in memory
+    Note over browser: JavaScript creates a new note object {content: "...", date: "..."}  and pushes it to the local notes array
 
-    browser->>browser: Re-render notes on the page
-    Note right of browser: No page reload occurs
+    Note over browser: JavaScript re-renders the notes list in the DOM immediately (no page reload)
+
+    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa 
+    server-->>browser: HTTP 201 Created
+
+    Note over browser: No redirect or page reload occurs.
 ```

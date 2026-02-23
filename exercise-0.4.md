@@ -1,5 +1,5 @@
 ```mermaid
-sequence diagram
+sequenceDiagram
     participant browser
     participant server
 
@@ -20,7 +20,7 @@ sequence diagram
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.css 
     activate server
     server->>browser: CSS file
-    deactivate browser
+    deactivate server
 
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.js 
     activate server
@@ -31,7 +31,8 @@ sequence diagram
 
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json 
     activate server
-    server->>browser: JSON file 
+    server->>browser: JSON file
+    deactivate server
 
     Note right of browser: Browser runs callback function to render notes
 ```

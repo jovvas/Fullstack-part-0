@@ -4,26 +4,18 @@ sequenceDiagram
     participant server
 
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa
-    activate server
-    server-->>browser: HTML document (SPA shell)
-    deactivate server
+    server-->>browser: HTML document 
 
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
-    activate server
     server-->>browser: CSS file
-    deactivate server
 
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa.js
-    activate server
     server-->>browser: JavaScript file
-    deactivate server
 
-    Note right of browser: Browser executes SPA JavaScript
+    Note right of browser: Browser executes JavaScript file, which fetches the notes
 
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
-    activate server
-    server-->>browser: JSON data [{ "content": "HTML is easy", "date": "2023-1-1" }, ... ]
-    deactivate server
+    server-->>browser: JSON data [{ "content": "...", "date": "..." }, ... ]
 
-    Note right of browser: JavaScript renders notes dynamically without reloading the page
+    Note right of browser: Browser renders notes dynamically using JavaScript, without reloading the page
 ```

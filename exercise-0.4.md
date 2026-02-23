@@ -13,25 +13,26 @@ sequence diagram
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes 
     activate server
     server->>browser: HTML document
-    deactivate server0
+    deactivate server
 
     Notes right of browser: The browser reloads the Notes page
 
-    browser->>server GET https://studies.cs.helsinki.fi/exampleapp/main.css 
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.css 
     activate server
     server->>browser: CSS file
-    deactivate browser
+    deactivate server
 
-    browser->>server GET https://studies.cs.helsinki.fi/exampleapp/main.js 
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.js 
     activate server
     server->>browser: JavaScript file
     deactivate server
 
     Note right of browser: Browser executes JavaScript that fetches JSON from the server
 
-    browser->>server GET https://studies.cs.helsinki.fi/exampleapp/data.json 
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json 
     activate server
-    server->>browser: JSON file 
+    server->>browser: JSON file
+    deactivate server
 
     Note right of browser: Browser runs callback function to render notes
 ```

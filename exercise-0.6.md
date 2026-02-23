@@ -3,8 +3,16 @@ sequenceDiagram
     participant browser
     participant server
 
-    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa 
-    server->>browser: responds with status code 201 created 
+    Note right of browser: User writes a note and clicks "Save"
 
-    Note right of browser: The POST request contains the new note as JSON data containing  the content of the note and the timestamp
+    browser->>browser: JavaScript intercepts form submission
+    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+    activate server
+    server-->>browser: 201 Created (JSON response)
+    deactivate server
+
+    Note right of browser: JavaScript updates the notes list in memory
+
+    browser->>browser: Re-render notes on the page
+    Note right of browser: No page reload occurs
 ```
